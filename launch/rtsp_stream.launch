@@ -1,0 +1,10 @@
+<!-- rosrun image_transport republish compressed in:=/internet/image out:=/camera/image -->
+<launch>
+    <arg name="image_in" value="/camera_left/image_raw" />
+    <arg name="image_out" value="/auip/rtsp/image" />
+    <node name="rtsp_auip_stream" pkg="image_transport" type="republish" args="compressed in:=$(arg image_in) out:=$(arg image_out)" respawn="true" />
+
+
+    <include file="$(find ros_rtsp)/launch/rtsp_streams.launch"/>
+
+</launch>
